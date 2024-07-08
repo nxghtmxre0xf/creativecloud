@@ -1,0 +1,62 @@
+<form class="cc-form" action="/api/thread/add" method="POST">
+
+    <h1 id="title-rely" contenteditable="true" class="content-title">✎Название</h1>
+    <input id="title" type="hidden" name="title" value="title">
+
+    <div class="cc-row-start w100">
+        <p class="cc-form-label-default">Категория:</p>
+        <input class="flex110" type="text" name="category" list="categories" id="thread-category" required>
+        <datalist id="categories">
+            <% data.categories.forEach(category => { %>
+                <option value="<%=category %>"><%=category %></option>
+            <% }) %>
+        </datalist>
+    </div>
+
+    <div class="cc-row-start w100">
+        <p class="cc-form-label-default">Изображение:</p>
+        <input class="flex110" type="file"accept="image/*" multiple="false" id="thread-image">
+        <input class="flex110" type="text" id="image-data" name="image" placeholder="image data">
+    </div>
+
+    <div class="cc-row">
+        <div class="cc-col img-preview-form">
+            <p class="cc-form-label-default">Превью:</p>
+            <img id="image-preview" src="<%= data.static %>media/ccloud/no-image.png" alt="">
+            <p>Размер: <span id="image-size">0</span>КБ</p>
+        </div>
+    
+        <div class="thread-preview thread-preview-form" id="thread-block-preview" data-title="TITLE">
+            <div class="thread-preview-image">
+                <img id="thread-img-preview" src="<%= data.static %>media/ccloud/no-image.png" alt="">
+            </div>
+            <strong id="thread-title-preview">TITLE</strong>
+            <p id="thread-category-preview">CATEGORY</p>
+        </div>
+    </div>
+
+    <section class="editor-holder">
+        <div id="editor"></div>
+    </section>
+    <input id="text" type="hidden" name="text" value="text">
+
+    <input type="submit" value="Сохранить">
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+<script>
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+        [{ header: [1, 2, false] }],
+        ['bold', 'italic', 'underline'],
+        ['image', 'code-block'],
+        ],
+        placeholder: 'Начни писать...',
+    },
+    });
+</script>
+
+<script src="<%= data.static %>js/add.js"></script>

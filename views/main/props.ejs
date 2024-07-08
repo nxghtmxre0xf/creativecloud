@@ -1,0 +1,35 @@
+<form class="cc-form" action="/api/properties/set" method="get">
+    <div data-title="Заголовки" class="content-sub form-change props-window">
+        <div class="cc-row">
+            <p>Заголовок</p>
+            <input type="text" name="title" value="<%= data.title %>">
+        </div>
+        <div class="cc-row">
+            <p>Подзаголовок</p>
+            <input type="text" name="subtitle" value="<%= data.subtitle %>">
+        </div>
+        <input type="submit" value="Сохранить">
+    </div>
+</form>
+
+<form class="cc-form" action="/api/properties/set/logo" method="post" enctype="multipart/form-data">
+    <div data-title="Логотип" class="content-sub form-logo props-window">
+        <input id="logo-file" type="file" name="file">
+        <div class="image-preview">
+            <img id="image-preview" src="<%= data.static %><%= data.logo %>" alt="">
+        </div>
+        <p class="image-preview-size">WxH</p>
+        <input type="submit" value="Сохранить">
+        <a class="cc-button" href="/api/properties/set/logo/default">Сбросить</a>
+    </div>
+</form>
+
+<div class="props-center">
+    <div data-title="Основное" class="content-sub props-window">
+        <p>Версия Creative Cloud: <%= data.version %></p>
+        <p>Версия NodeJS: <%= data.nodejs %></p>
+        <button data-tippy-content="Удерживайте 5 секунд для удаления" data-timer="5" onclick="dropDB()" class="cc-button delete-button"><span uk-icon="icon: trash; ratio: 1"></span>Сбросить базу данных</button>
+    </div>
+</div>
+
+<script src="<%= data.static %>js/props.js"></script>

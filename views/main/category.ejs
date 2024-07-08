@@ -1,0 +1,22 @@
+<form action="/category" class="cc-row cc-search-page cc-form w100">
+    <p>Поиск по категории:</p>
+    <input class="flex110" type="text" placeholder="Поиск по категории" list="categories" value="<%= data.query %>" name="s">
+    <input type="submit" class="cc-button cc-search-button" value="">
+    <datalist id="categories">
+        <% data.categories.forEach(category => { %>
+            <option value="<%=category %>"><%=category %></option>
+        <% }) %>
+    </datalist>
+</form>
+
+<section class="thread-row">
+    <% data.search.forEach(thread => { %>
+            <a href="/thread/<%=thread.id%>" class="thread-preview" data-title="#<%= thread.id %> <%=thread.title%>">
+                <div class="thread-preview-image">
+                    <img src="<%= thread.image  || data.static + 'media/ccloud/no-image.png' %>" alt="">
+                </div>
+                <strong><%=thread.title%></strong>
+                <p><%=thread.category%></p>
+            </a>
+    <% }) %>
+</section>

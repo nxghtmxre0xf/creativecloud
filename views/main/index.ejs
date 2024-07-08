@@ -1,0 +1,63 @@
+<h2 class="content-title">Закреплено</h2>
+<section class="summary-row categories-list w100">
+    <% if (data.hasFavorites) { %>
+        <% data.threads.forEach(thread => { %>
+            <% if (thread.favorite) { %>
+                <a class="cc-hover-favorite" href="/thread/<%=thread.id%>"><p><span uk-icon="star"></span><%=thread.title %></p></a>
+            <% } %>
+        <% }) %>
+    <% } else { %>
+        <p>Нет закреплённых записей</p>
+    <% } %>
+</section>
+
+
+<h2 class="content-title">Категории</h2>
+
+<% data.categories.forEach(category => { %>
+<details class="default-details">
+    <summary><%=category%></summary>
+    <section class="summary-row categories-list">
+        <% data.threads.forEach(thread => { %>
+            <% if(thread.category === category) { %>
+            <a class="cc-hover" href="/thread/<%=thread.id%>"><%=thread.title%></a>
+            <% } %>
+        <% }) %>
+    </section>
+</details>
+<% }) %>
+
+<h2 class="content-title">Все статьи по алфавиту</h2>
+
+<details class="default-details">
+    <summary>Список</summary>
+    <section class="summary-row categories-list">
+        <% data.threads.forEach(thread => { %>
+            <a class="cc-hover" href="/thread/<%=thread.id%>"><%=thread.title%></a>
+        <% }) %>
+    </section>
+</details>
+
+<h2 class="content-title">Статьи</h2>
+
+<!-- <section class="thread-row">
+    <a href="/threads/2" class="thread-preview" data-title="Статья">
+        <div class="thread-preview-image">
+            <img src="../media/ccloud/no-image.png" alt="">
+        </div>
+        <strong>Название</strong>
+        <p>Категория</p>
+    </a>
+</section> -->
+
+<section class="thread-row">
+    <% data.threads.forEach(thread => { %>
+            <a href="/thread/<%=thread.id%>" class="thread-preview" data-title="#<%= thread.id %> <%=thread.title%>">
+                <div class="thread-preview-image">
+                    <img src="<%= thread.image  || data.static + 'media/ccloud/no-image.png' %>" alt="">
+                </div>
+                <strong><%=thread.title%></strong>
+                <p><%=thread.category%></p>
+            </a>
+    <% }) %>
+</section>

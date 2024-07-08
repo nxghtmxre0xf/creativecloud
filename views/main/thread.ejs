@@ -1,0 +1,37 @@
+<div class="thread-wrapper">
+    <section class="thread-text">
+        <%- data.thread.text %>
+    </section>
+    <section class="thread-info">
+        <h4 class="thread-info-center"><strong><%= data.thread.title %></strong></h4>
+        <img src="<%= data.thread.image || data.imageDefault %>" alt="image">
+        <h5 class="thread-important">Категория: <a href="/category?s=<%= data.thread.category %>"><%= data.thread.category %></a></h5>
+        <!-- <div class="thread-attributes thread-important">
+            <h5>Ключ: <strong>Значение</strong></h5>
+            <h5>Ключ: <strong>Значение</strong></h5>
+            <h5>Ключ: <strong>Значение</strong></h5>
+            <h5>Ключ: <strong>Значение</strong></h5>
+        </div>
+        <h5>Статус: <strong>Неизвестен</strong></h5> -->
+        <h5>Изменено: <strong><% if (data.thread.date) { %>
+         <%= data.thread.date %>
+        <% } else  {%>
+            Неизвестно
+        <% } %></strong></h5>
+
+        <!-- <a href="/api/thread/delete/<%= data.thread.id %>" target="_blank" style="margin-bottom: .5rem;" class="cc-button"><span uk-icon="icon: trash; ratio: 1"></span>Удалить</a> -->
+
+        <button data-tippy-content="Удерживайте 5 секунд для удаления" data-timer="5" onclick="deleteThread(<%= data.thread.id %>)" class="cc-button delete-button"><span uk-icon="icon: trash; ratio: 1"></span>Удалить</button>
+
+        <a href="/thread/edit/<%= data.thread.id %>" class="cc-button"><span uk-icon="icon: pencil; ratio: 1"></span>Изменить</a>
+        
+        <% if (data.thread.favorite) { %>
+            <button onclick="setFavorite(<%= data.thread.id %>, false)" class="cc-button"><span uk-icon="icon: unlock; ratio: 1"></span>Открепить</button>
+        <% } else { %>
+            <button onclick="setFavorite(<%= data.thread.id %>, true)" class="cc-button"><span uk-icon="icon: lock; ratio: 1"></span>Закрепить</button>
+        <% } %>
+         
+    </section>
+</div>
+
+<script src="<%= data.static %>js/thread.js"></script>

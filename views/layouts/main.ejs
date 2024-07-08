@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<%= data.static %>media/ccloud/256.png" type="image/x-icon">
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <link rel="stylesheet" href="<%= data.static %>uikit/css/uikit.min.css">
+    <link rel="stylesheet" href="<%= data.static %>uikit/css/uikit-rtl.min.css">
+
+    <script src="<%= data.static %>uikit/js/uikit.min.js"></script>
+    <script src="<%= data.static %>uikit/js/uikit-icons.min.js"></script>
+
+    <link rel="stylesheet" href="<%= data.static %>css/app.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet"/>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <title><%= data.title %> - CreativeCloud - <%= data.page %></title>
+</head>
+<body>
+    <% if (!data.hideNavigation) { %>
+        <section class="navigation">
+            <a href="/" data-tippy-content="Главная"><span uk-icon="home"></span></a>
+            <a href="/properties/edit" data-tippy-content="Изменить параметры"><span uk-icon="settings"></span></a>
+            <a href="/thread/add" data-tippy-content="Добавить статью"><span uk-icon="plus"></span></a>
+            <!-- <a href="/thread/1" data-tippy-content="Тестовая статья"><span uk-icon="thumbnails"></span></a> -->
+        </section>
+    <% } %>
+
+    <div class="root">
+        <header class="uk-container-large">
+            <a href="/" class="cc-row">
+                <img class="cc-logo" src="<%= data.static %><%= data.logo %>" alt="CC">
+                <!-- media/ccloud/512.png -->
+                <div class="cc-col-left header-title">
+                    <h2><%= data.title %></h2>
+                    <sup><%= data.subtitle %></sup>
+                </div>
+            </a>
+            <div class="header-right">
+                <div class="cc-col-pages">
+                    <strong><%= data.threadsCount %></strong>
+                    <small>СТРАНИЦ</small>
+                </div>
+                <form action="/search" class="cc-row cc-form cc-search">
+                    <input class="search-input" type="text" placeholder="Поиск" name="s">
+                    <input type="submit" class="cc-button cc-search-button" value="">
+                </form>
+            </div>
+        </header>
+        <main data-title="<% if (data.page) { %><%= data.page %><% } else { %>CreativeCloud<% } %>" class="uk-container-large">
+            <section class="content <% if (!data.change) { %>change-mode<% } %>">
+                <%-body%>
+            </section>
+
+            <% if (!data.change) { %>
+                <aside class="content-misc">
+                    <h5 class="content-title">Последнее</h5>
+                    <% data.threadsByDate.forEach(thread => { %>
+                        <a class="cc-hover thread-by-date" href="/thread/<%= thread.id %>">
+                            <p><%= thread.title %> - <%= thread.date ? data.dateToStringFull(thread.date) : "??" %></p>
+                        </a>
+                    <% }) %>
+                    <% if (data.threadsByDate.length == 0) { %>
+                     <p>Записей не найдено</p>
+                    <% } %>
+                </aside>
+            <% } %>
+        </main>
+    </div>
+
+    <script src="<%= data.static %>js/app.js"></script>
+</body>
+</html>

@@ -21,9 +21,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: none;
-}
+
 
 .root {
     width: 100%;
@@ -231,34 +229,9 @@ main::before {
     flex-direction: column;
 }
 
-/* .categories-list a {
-    color: black;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.categories-list a:hover::after {
-    content: '';
-    width: 100%;
-    height: 1px;
-    background: black;
-    margin-left: .25rem; */
-/* } */
-
 details {
     user-select: none;
 }
-
-/* .categories-list a:hover::before {
-    content: '';
-    width: 1rem;
-    height: 1px;
-    background: black;
-    margin-right: .25rem;
-} */
 
 .cc-hover {
     color: black;
@@ -271,7 +244,6 @@ details {
 
 .cc-hover::after {
     content: '';
-    /* width: 100%; */
 
     display: flex;
 
@@ -281,18 +253,6 @@ details {
     height: 1px;
     background: black;
     margin-left: .25rem;
-}
-
-.cc-hover:hover {
-    color: black;
-}
-
-.cc-hover:hover::before {
-    content: '';
-    width: 1rem;
-    height: 1px;
-    background: black;
-    margin-right: .25rem;
 }
 
 .cc-hover-favorite {
@@ -302,32 +262,6 @@ details {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-}
-
-.cc-hover-favorite:hover::after {
-    content: '';
-    /* width: 100%; */
-
-    display: flex;
-
-    min-width: 1rem;
-
-    flex: 1 1 0px;
-    height: 1px;
-    background: black;
-    margin-left: .25rem;
-}
-
-.cc-hover-favorite:hover {
-    color: black;
-}
-
-.cc-hover-favorite:hover::before {
-    content: '';
-    width: 1rem;
-    height: 1px;
-    background: black;
-    margin-right: .25rem;
 }
 
 .cc-hover-favorite p {
@@ -384,7 +318,7 @@ details {
 
     background: black;
 
-    z-index: 3;
+    z-index: 999;
 
     display: flex;
     align-items: center;
@@ -393,10 +327,6 @@ details {
 
     opacity: 0.5;
     transition: opacity .1s linear;
-}
-
-.navigation:hover {
-    opacity: 1;
 }
 
 .navigation > button, .navigation > a {
@@ -416,9 +346,7 @@ details {
     user-select: none;
 }
 
-.navigation > button:hover, .navigation > a:hover {
-    background: rgb(56, 56, 56);
-}
+
 
 @media screen and (max-width: 1475px) {
     .navigation {
@@ -535,18 +463,8 @@ details {
     gap: .25rem;
 }
 
-.cc-button:hover {
-    background: rgb(56, 56, 56);
-    color: white;
-}
-
 .cc-button:disabled {
     cursor: default;
-}
-
-.cc-button:disabled:hover {
-    background: black;
-    color: white;
 }
 
 .cc-form input[type=submit] {
@@ -555,11 +473,6 @@ details {
     width: 100%;
 
     cursor: pointer;
-}
-
-.cc-form input[type=submit]:hover {
-    background: rgb(56, 56, 56);
-    color: white;
 }
 
 .form-change {
@@ -677,10 +590,6 @@ details {
     transition: transform .1s;
 }
 
-.thread-preview:hover > .thread-preview-image > img {
-    transform: scale(1.25);
-}
-
 /* .thread-preview * {
     outline: 1px solid red;
 } */
@@ -738,12 +647,6 @@ details {
     transition: transform .1s;
 }
 
-.img-preview-form img:hover {
-    transform: scale(1.25);
-
-    z-index: 5;
-}
-
 .img-preview-form p {
     text-align: center;
 }
@@ -788,10 +691,6 @@ details {
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: 1.5rem !important;
-}
-
-.cc-search-button:hover {
-    background-color: rgb(56, 56, 56) !important;
 }
 
 .props-center {
@@ -862,4 +761,86 @@ details {
 .image-preview-size {
     width: 100%;
     text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+@media (hover: hover) {
+
+    .cc-hover:hover {
+        color: black;
+    }
+    
+    .cc-hover:hover::before {
+        content: '';
+        width: 1rem;
+        height: 1px;
+        background: black;
+        margin-right: .25rem;
+    }
+
+    .cc-hover-favorite:hover::after {
+        content: '';
+        /* width: 100%; */
+    
+        display: flex;
+    
+        min-width: 1rem;
+    
+        flex: 1 1 0px;
+        height: 1px;
+        background: black;
+        margin-left: .25rem;
+    }
+    
+    .cc-hover-favorite:hover {
+        color: black;
+    }
+    
+    .cc-hover-favorite:hover::before {
+        content: '';
+        width: 1rem;
+        height: 1px;
+        background: black;
+        margin-right: .25rem;
+    }
+
+    .navigation > button:hover, .navigation > a:hover {
+        background: rgb(56, 56, 56);
+    }
+
+    .navigation:hover {
+        opacity: 1;
+    }
+
+    .cc-button:disabled:hover {
+        background: black;
+        color: white;
+    }
+
+    .cc-button:hover {
+        background: rgb(56, 56, 56);
+        color: white;
+    }
+
+    .cc-form input[type=submit]:hover {
+        background: rgb(56, 56, 56);
+        color: white;
+    }
+
+    .thread-preview:hover > .thread-preview-image > img {
+        transform: scale(1.25);
+    }
+
+    .img-preview-form img:hover {
+        transform: scale(1.25);
+    
+        z-index: 5;
+    }
+
+    .cc-search-button:hover {
+        background-color: rgb(56, 56, 56) !important;
+    }
 }

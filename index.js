@@ -58,7 +58,6 @@ app.use(async (req, res, next) => {
     data.logo = props[0].logo;
     data.change = false;
     data.threadsByDate = await api.getThreadsByDate();
-    console.log(data.threadsByDate);
     data.dateToString = dateToString;
     data.dateToStringFull = dateToStringFull;
     data.threadsCount = await api.threadsCount();
@@ -182,8 +181,6 @@ app.get('/search', async (req, res) => {
 
   data.categories = await api.getCategories();
   data.search = await api.getThreadsSearch(data.query);
-
-  
 
   data.page = `Поиск "${req.query.s}"`;
 

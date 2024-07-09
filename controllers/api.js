@@ -4,8 +4,6 @@ const path = require('path');
 
 require('dotenv').config();
 
-const { defines } = require('../src/defines');
-
 const db = mysql.createConnection({
     host: process.env.db_host,
     user: process.env.db_user,

@@ -1,2 +1,1 @@
-npm i
-npm run serve
+npm i && npm run serve && pause
